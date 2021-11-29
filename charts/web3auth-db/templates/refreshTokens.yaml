@@ -1,7 +1,7 @@
 apiVersion: schemas.schemahero.io/v1alpha4
 kind: Table
 metadata:
-  name: refreshTokens
+  name: refresh-tokens
 spec:
   database: {{ .Values.psql.name }}
   name: refreshTokens
