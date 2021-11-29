@@ -1,45 +1,50 @@
 apiVersion: schemas.schemahero.io/v1alpha4
 kind: Table
 metadata:
-  name: users
+  name: refreshTokens
 spec:
   database: {{ .Values.psql.name }}
-  name: users
+  name: refreshTokens
   schema:
     postgres:
 
       primaryKey:
-      - publicAddress
+        - id
 
       foreignKeys:
       - columns:
           - publicAddress
         references:
-          table: refreshTokens
+          table: users
           columns:
             - publicAddress
 
       indexes:
-      - columns: 
-        - publicAddress
-        isUnique: true
+        - columns: 
+          - id
+          isUnique: true
 
       columns:
 
+      - name: id
+        type: uuid
+        constraints:
+          notNull: true
+      
       # User's public Address
       - name: publicAddress
         type: varchar
         constraints:
           notNull: true
       
-      - name: username
+      - name: token
         type: varchar
         constraints:
           notNull: true
 
       # Record Created At
-      - name: nonce
-        type: uuid
+      - name: revoked
+        type: boolean
         constraints:
           notNull: true
 
