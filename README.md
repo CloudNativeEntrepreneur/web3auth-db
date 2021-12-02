@@ -1,3 +1,3 @@
 # web3auth-db
 
-Auth Example's Hasura's Read Model - PostgreSQL via Zalando PostgreSQL Operator.
+web3auth database and schema via Zalando PostgreSQL Operator and Schemahero.
