@@ -9,33 +9,23 @@ spec:
     postgres:
 
       primaryKey:
-      - publicAddress
-
-      foreignKeys:
-      - columns:
-          - publicAddress
-        references:
-          table: refreshTokens
-          columns:
-            - publicAddress
+      - address
 
       indexes:
       - columns: 
-        - publicAddress
+        - address
         isUnique: true
 
       columns:
 
       # User's public Address
-      - name: publicAddress
-        type: varchar
+      - name: address
+        type: text
         constraints:
           notNull: true
       
       - name: username
-        type: varchar
-        constraints:
-          notNull: true
+        type: text
 
       # Record Created At
       - name: nonce

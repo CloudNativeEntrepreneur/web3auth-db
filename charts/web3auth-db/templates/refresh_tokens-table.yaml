@@ -4,7 +4,7 @@ metadata:
   name: refresh-tokens
 spec:
   database: {{ .Values.psql.name }}
-  name: refreshTokens
+  name: refresh_tokens
   schema:
     postgres:
 
@@ -13,16 +13,11 @@ spec:
 
       foreignKeys:
       - columns:
-          - publicAddress
+          - address
         references:
           table: users
           columns:
-            - publicAddress
-
-      indexes:
-        - columns: 
-          - id
-          isUnique: true
+            - address
 
       columns:
 
@@ -32,13 +27,13 @@ spec:
           notNull: true
       
       # User's public Address
-      - name: publicAddress
-        type: varchar
+      - name: address
+        type: text
         constraints:
           notNull: true
       
       - name: token
-        type: varchar
+        type: text
         constraints:
           notNull: true
 
